@@ -6,6 +6,9 @@ function getYearOfBirth(age){
     return yearOfBirth;
 }
 function createGreeting(name,age) {
+    if (name === undefined || age === undefined ) {
+        throw new Error('Usage: createGreeting(name, age)');
+    }
     let yob;
     try {
         yob = getYearOfBirth(age);
@@ -15,4 +18,8 @@ function createGreeting(name,age) {
     return `Hi, my name is ${name} and I'm ${age} years old
     I was born in ${yob}.`;
 }
-console.log(createGreeting('sam',-1));
+try {
+console.log(createGreeting(-1));
+} catch (e) {
+    console.log(e);
+}
